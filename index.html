@@ -504,16 +504,9 @@ function closeCoNha() {
     isPaused = false; // Tiếp tục game
     document.getElementById('conha-modal').classList.add('hidden');
 }
-
 function goToCoNha() {
-    // Hiện tại chưa có link nên mình để thông báo, sau này bạn thay '#' bằng link thật nhé
-    const linkMoi = "https://www.youtube.com/watch?v=v9XkENdZi1o"; 
-    
-    if(linkMoi === "https://www.youtube.com/watch?v=v9XkENdZi1o") {
-        alert("Tính năng đang cập nhật link phiên bản mới!");
-    } else {
-        window.location.href = linkMoi;
-    }
+    // Chỉ cần thay cái link vào giữa hai dấu nháy đơn này là xong
+    window.location.href = 'https://www.youtube.com/watch?v=v9XkENdZi1o';
 }
 </script>
 </body>
