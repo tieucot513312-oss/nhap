@@ -81,7 +81,27 @@
 
 <div id="pause-modal" class="modal-overlay hidden"><div class="modal-content"><h2 style="color:var(--accent);">☕ NGHỈ GIẢI LAO</h2><button class="btn" style="background:#3498db;" onclick="resumeGame()">OK TIẾP TỤC ▶</button></div></div>
 <div id="reset-modal" class="modal-overlay hidden"><div class="modal-content"><h2 style="color:#ff4757;">⚠️ CẢNH BÁO</h2><p>Chắc chưa?</p><div style="display:flex; gap:10px;"><button class="btn" style="background:#e74c3c; flex:1;" onclick="confirmReset()">CHẮC RỒI</button><button class="btn" style="background:#95a5a6; flex:1;" onclick="closeReset()">THÔI CHƠI TIẾP</button></div></div></div>
+<div id="conha-modal" class="modal-overlay hidden">
+    <div class="modal-content" style="background:#ffffff; border: 3px solid #000; width: 400px; text-align: left; padding: 25px;">
+        <h2 style="color:#000; margin-top:0; font-size: 24px; text-align: center;">Bạn muốn đổi qua phiên bản cợt nhã?</h2>
+        
+        <p style="color:#ff4757; font-weight: bold; text-align: center; font-size: 18px; margin-bottom: 20px;">
+            Phiên bản này dành cho zone 5 ngón tay
+        </p>
 
+        <div style="color: #333; font-size: 14px; line-height: 1.6; margin-bottom: 25px;">
+            <p>• Nếu bạn không cùng zone với mình, hãy ở lại đây, chúng ta vẫn là gia đình - <b>Gai Con</b>.</p>
+            <p>• Nếu bạn không cùng zone với mình mà vẫn muốn chơi tiếp, hy vọng bạn chỉ xem đây là trò chơi, đừng đặt nặng vấn đề.</p>
+            <p>• Nếu cùng zone, <b>come on bấy bì!</b></p>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+            <button class="btn" style="background:#7f8c8d; color:#fff; flex:1; height: 45px;" onclick="closeCoNha()">Thôi ở lại đây</button>
+            <button class="btn" style="background:#000; color:#fff; flex:1; height: 45px;" onclick="goToCoNha()">Chơi luôn</button>
+        </div>
+    </div>
+</div>
+    
 <div id="admin-panel">
     <div style="display:flex; justify-content: space-between; margin-bottom:10px;"><h2 style="color:var(--accent); margin:0;">ADMIN - QUẢN LÝ DỮ LIỆU</h2><button class="btn" style="background:#2ecc71; width:auto;" onclick="startGame()">VÀO CHƠI LUÔN</button></div>
     <div class="admin-grid">
@@ -130,6 +150,7 @@
     <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
         <button class="btn" style="background:#3498db;" onclick="togglePause()">Tạm dừng</button>
         <button class="btn" style="background:#9b59b6;" onclick="resetGame()">Làm lại</button>
+        <button class="btn" style="background:#ffffff; color:#000000; margin-top: 10px; border: 1px solid #ccc;" onclick="showCoNhaModal()">BẢN CỢT NHÃ</button>
     </div>
 </div> ```
 
@@ -474,6 +495,26 @@ function showEndPopup(pScore, aiScore) {
     function resetGame() { document.getElementById('reset-modal').classList.remove('hidden'); }
     function confirmReset() { document.getElementById('reset-modal').classList.add('hidden'); startGame(); }
     function closeReset() { document.getElementById('reset-modal').classList.add('hidden'); }
+    function showCoNhaModal() {
+    isPaused = true; // Tạm dừng bộ đếm thời gian của game
+    document.getElementById('conha-modal').classList.remove('hidden');
+}
+
+function closeCoNha() {
+    isPaused = false; // Tiếp tục game
+    document.getElementById('conha-modal').classList.add('hidden');
+}
+
+function goToCoNha() {
+    // Hiện tại chưa có link nên mình để thông báo, sau này bạn thay '#' bằng link thật nhé
+    const linkMoi = "https://www.youtube.com/watch?v=v9XkENdZi1o"; 
+    
+    if(linkMoi === "https://www.youtube.com/watch?v=v9XkENdZi1o") {
+        alert("Tính năng đang cập nhật link phiên bản mới!");
+    } else {
+        window.location.href = linkMoi;
+    }
+}
 </script>
 </body>
 </html>
