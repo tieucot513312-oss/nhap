@@ -82,25 +82,32 @@
 <div id="pause-modal" class="modal-overlay hidden"><div class="modal-content"><h2 style="color:var(--accent);">☕ NGHỈ GIẢI LAO</h2><button class="btn" style="background:#3498db;" onclick="resumeGame()">OK TIẾP TỤC ▶</button></div></div>
 <div id="reset-modal" class="modal-overlay hidden"><div class="modal-content"><h2 style="color:#ff4757;">⚠️ CẢNH BÁO</h2><p>Chắc chưa?</p><div style="display:flex; gap:10px;"><button class="btn" style="background:#e74c3c; flex:1;" onclick="confirmReset()">CHẮC RỒI</button><button class="btn" style="background:#95a5a6; flex:1;" onclick="closeReset()">THÔI CHƠI TIẾP</button></div></div></div>
 <div id="conha-modal" class="modal-overlay hidden">
-    <div class="modal-content" style="background:#C0C0C0; border: 3px solid #000; width: 400px; text-align: left; padding: 25px;">
-        <h2 style="color:#ffffff; margin-top:0; font-size: 24px; text-align: center;">Bạn muốn đổi qua phiên bản cợt nhã?</h2>
-        <p style="color:#ffff00; font-weight: bold; text-align: center; font-size: 18px; margin-bottom: 5px;">
-           Khó hơn, giành giật lá bài hơn. Nhưng mà... xem lưu ý dưới đây.
-        </p>
-        <p style="color:#ff4757; font-weight: bold; text-align: center; font-size: 18px; margin-bottom: 10px;">
-            Lưu ý: Phiên bản này có zone 5 ngón tay
+    <div class="modal-content" style="background-color: #222; border: 2px solid #FFC107; border-radius: 12px; width: 420px; max-width: 90%; text-align: center; padding: 25px; color: #fff; font-family: sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        
+        <h2 style="color: #fff; margin-top: 0; font-size: 22px; margin-bottom: 10px; font-weight: bold;">
+            Bạn muốn đổi qua phiên bản cợt nhã?
+        </h2>
+
+        <p style="color: #ff4757; font-weight: bold; font-size: 16px; margin-bottom: 20px;">
+             Lưu ý: Phiên bản này có zone 5 ngón tay
         </p>
 
-        <div style="color: #333; font-size: 14px; line-height: 1.6; margin-bottom: 25px;">
-            <p>• Nếu bạn không cùng zone với mình, hãy ở lại đây, chúng ta vẫn là gia đình - <b>Gai Con</b>.</p>
-            <p>• Nếu bạn không cùng zone với mình mà vẫn muốn chơi tiếp, hy vọng bạn chỉ xem đây là trò chơi, đừng đặt nặng vấn đề.</p>
-            <p>• Nếu cùng zone, <b>come on bấy bì!</b></p>
+        <div style="color: #ddd; font-size: 14px; line-height: 1.6; margin-bottom: 25px; text-align: left; padding: 0 10px;">
+            <p style="margin-bottom: 8px;">• Nếu bạn không cùng zone với mình, hãy ở lại đây, chúng ta vẫn là gia đình - <b>Gai Con</b>.</p>
+            <p style="margin-bottom: 8px;">• Nếu bạn không cùng zone với mình mà vẫn muốn chơi tiếp, hy vọng bạn chỉ xem đây là trò chơi, đừng đặt nặng vấn đề.</p>
+            <p>• Nếu cùng zone, <b style="color: #FFC107;">come on bấy bì!</b></p>
         </div>
 
-        <div style="display:flex; gap:10px;">
-            <button class="btn" style="background:#7f8c8d; color:#fff; flex:1; height: 45px;" onclick="closeCoNha()">Thôi ở lại đây</button>
-            <button class="btn" style="background:#000; color:#fff; flex:1; height: 45px;" onclick="goToCoNha()">Chơi luôn (Coming soon)</button>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            <button onclick="/* Code đóng modal cũ của bạn */" style="flex: 1; background-color: #555; color: #fff; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">
+                Thôi ở lại đây
+            </button>
+            
+            <button onclick="/* Code chuyển trang cũ của bạn */" style="flex: 1; background-color: #3498db; color: #fff; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">
+                Chơi luôn (Coming soon)
+            </button>
         </div>
+
     </div>
 </div>
     
