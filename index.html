@@ -98,10 +98,22 @@
             <p>• Nếu cùng zone, <b style="color: #FFC107;">come on bấy bì!</b></p>
         </div>
 
+        <div style="display: flex; gap: 10px; justify-content: center;">
+            
+            <button onclick="closeCoNha()" 
+                    style="flex: 1; background-color: #555; color: #fff; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">
+                Thôi ở lại đây
+            </button>
+            
+            <button onclick="goToCoNha()" 
+                    style="flex: 1; background-color: #3498db; color: #fff; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 14px;">
+                Chơi luôn (Coming soon)
+            </button>
+            
+        </div>
 
     </div>
 </div>
-    
 <div id="admin-panel">
     <div style="display:flex; justify-content: space-between; margin-bottom:10px;"><h2 style="color:var(--accent); margin:0;">ADMIN - QUẢN LÝ DỮ LIỆU</h2><button class="btn" style="background:#2ecc71; width:auto;" onclick="startGame()">VÀO CHƠI LUÔN</button></div>
     <div class="admin-grid">
@@ -507,7 +519,7 @@ function closeCoNha() {
     
 function goToCoNha() {
     closeCoNha();
-    window.location.href = '#';
+    window.location.href = 'Link.com';
 }
 </script>
 </body>
