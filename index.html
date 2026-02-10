@@ -94,30 +94,6 @@
 <div id="pause-modal" class="modal-overlay hidden"><div class="modal-content"><h2 style="color:var(--accent);">☕ NGHỈ GIẢI LAO</h2><button class="btn" style="background:#3498db;" onclick="resumeGame()">OK TIẾP TỤC ▶</button></div></div>
 <div id="reset-modal" class="modal-overlay hidden"><div class="modal-content"><h2 style="color:#ff4757;">⚠️ CẢNH BÁO</h2><p>Chắc chưa?</p><div style="display:flex; gap:10px;"><button class="btn" style="background:#e74c3c; flex:1;" onclick="confirmReset()">CHẮC RỒI</button><button class="btn" style="background:#95a5a6; flex:1;" onclick="closeReset()">THÔI CHƠI TIẾP</button></div></div></div>
 <div id="conha-modal" class="modal-overlay hidden">
-    <div id="ver2-modal" class="modal-overlay hidden">
-    <div class="modal-content" style="background-color: #222; border: 2px solid #f39c12; border-radius: 12px; width: 400px; max-width: 90%; text-align: center; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-        
-        <h2 style="color: #fff; margin-top: 0; font-size: 24px; margin-bottom: 10px; font-weight: bold;">
-            Bạn muốn chuyển sang phiên bản nâng cao?
-        </h2>
-        
-        <p style="color: #bbb; font-style: italic; font-size: 14px; margin-bottom: 30px; line-height: 1.5;">
-            Phiên bản này sẽ gồm nhiều lá bài hơn, luật chơi sẽ phức tạp và mất thời gian hơn.
-        </p>
-
-        <div style="display: flex; gap: 15px; justify-content: center;">
-            <button onclick="closeVer2()" 
-                    style="flex: 1; background-color: #555; color: #fff; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">
-                Thôi ở lại đây
-            </button>
-            
-            <button onclick="goToVer2()" 
-                    style="flex: 1; background-color: #f39c12; color: #000; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">
-                OK chơi luôn
-            </button>
-        </div>
-    </div>
-</div>
     <div class="modal-content" style="background-color: #222; border: 2px solid #FFC107; border-radius: 12px; width: 420px; max-width: 90%; text-align: center; padding: 25px; color: #fff; font-family: sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
         
         <h2 style="color: #fff; margin-top: 0; font-size: 30px; margin-bottom: 8px; font-weight: bold;">
@@ -149,6 +125,30 @@
             
         </div>
 
+    </div>
+</div>
+       <div id="ver2-modal" class="modal-overlay hidden">
+    <div class="modal-content" style="background-color: #222; border: 2px solid #f39c12; border-radius: 12px; width: 400px; max-width: 90%; text-align: center; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        
+        <h2 style="color: #fff; margin-top: 0; font-size: 24px; margin-bottom: 10px; font-weight: bold;">
+            Bạn muốn chuyển sang phiên bản nâng cao?
+        </h2>
+        
+        <p style="color: #bbb; font-style: italic; font-size: 14px; margin-bottom: 30px; line-height: 1.5;">
+            Phiên bản này sẽ gồm nhiều lá bài hơn, luật chơi sẽ phức tạp và mất thời gian hơn.
+        </p>
+
+        <div style="display: flex; gap: 15px; justify-content: center;">
+            <button onclick="closeVer2()" 
+                    style="flex: 1; background-color: #555; color: #fff; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                Thôi ở lại đây
+            </button>
+            
+            <button onclick="goToVer2()" 
+                    style="flex: 1; background-color: #f39c12; color: #000; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                OK chơi luôn
+            </button>
+        </div>
     </div>
 </div>
 <div id="admin-panel">
