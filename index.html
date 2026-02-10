@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cảm Ơn Vì Đã Đến 2.0</title>
+    <title>Cảm Ơn Vì Đã Đến</title>
     <style>
         #admin-panel { 
             display: none; 
@@ -53,6 +53,18 @@
         .btn { color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; font-size: 12px; }
         .hidden { display: none !important; }
         @keyframes pulse { 0% { opacity: 0.7; } 100% { opacity: 1; } }
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia 2 cột đều nhau */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    margin-top: 10px;
+}
+.btn-grid .btn {
+    width: 100%;
+    margin: 0 !important; /* Xóa margin cũ nếu có */
+    font-size: 11px; /* Giảm nhẹ font chữ để vừa khung */
+    white-space: nowrap; /* Tránh xuống dòng chữ */
+}
     </style>
 </head>
 <body>
@@ -90,7 +102,7 @@
         <p style="color: #dda0dd; font-weight: bold; font-size: 18px; margin-bottom: 30px;">
             Khó hơn, giành giật hơn nhưng mà xem lưu ý giúp mình.
         <p style="color: #ff4757; font-weight: bold; font-size: 16px; margin-bottom: 6px;">
-             Lưu ý: Phiên bản này có zone 5 ngón tay (Map ẩn nha)
+             Lưu ý: Phiên bản này có zone cúp le (có lên xe)
         </p>
 
         <div style="color: #ddd; font-size: 14px; line-height: 1.6; margin-bottom: 5px; text-align: left; padding: 0 10px;">
@@ -114,18 +126,31 @@
         </div>
 
     </div>
-
 </div>
-<div id="back-modal" class="modal-overlay hidden">
-    <div class="modal-content">
-        <h2 style="color:#f1c40f; font-weight: bold; font-size: 20px;">Xác nhận quay lại phiên bản đơn giản?</h2>
-        <div style="display:flex; gap:10px; margin-top: 20px;">
-            <button class="btn" style="background:#27ae60; flex:1;" onclick="goToVersion1()">OK chắc rồi</button>
-            <button class="btn" style="background:#95a5a6; flex:1;" onclick="closeBackModal()">Ở lại đây</button>
+       <div id="ver2-modal" class="modal-overlay hidden">
+    <div class="modal-content" style="background-color: #222; border: 2px solid #f39c12; border-radius: 12px; width: 400px; max-width: 90%; text-align: center; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        
+        <h2 style="color: #fff; margin-top: 0; font-size: 24px; margin-bottom: 10px; font-weight: bold;">
+            Bạn muốn chuyển sang phiên bản nâng cao?
+        </h2>
+        
+        <p style="color: #bbb; font-style: italic; font-size: 14px; margin-bottom: 30px; line-height: 1.5;">
+            Phiên bản này sẽ gồm nhiều lá bài hơn, luật chơi sẽ phức tạp và mất thời gian hơn.
+        </p>
+
+        <div style="display: flex; gap: 15px; justify-content: center;">
+            <button onclick="closeVer2()" 
+                    style="flex: 1; background-color: #555; color: #fff; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                Thôi ở lại đây
+            </button>
+            
+            <button onclick="goToVer2()" 
+                    style="flex: 1; background-color: #f39c12; color: #000; border: none; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                OK chơi luôn
+            </button>
         </div>
     </div>
 </div>
-    
 <div id="admin-panel">
     <div style="display:flex; justify-content: space-between; margin-bottom:10px;"><h2 style="color:var(--accent); margin:0;">ADMIN - QUẢN LÝ DỮ LIỆU</h2><button class="btn" style="background:#2ecc71; width:auto;" onclick="startGame()">VÀO CHƠI LUÔN</button></div>
     <div class="admin-grid">
@@ -136,16 +161,26 @@
 </div>
 
 <div id="game-screen" class="hidden">
-<div class="rules-sidebar">
-    <h3>LUẬT CHƠI</h3>
-    <p style="color: white; text-align: center; margin-bottom: 20px;">Luật chơi tương tự phiên bản cũ.</p>
-    
-    <button class="btn" 
-            style="background:#e67e22; color:#fff; padding: 10px; width: 100%;" 
-            onclick="showBackModal()">
-        Quay lại bản 1.0
-    </button>
-</div>
+    <div class="rules-sidebar">
+        <h3>LUẬT CHƠI</h3>
+        <b>1. Mục tiêu:</b> Thu thập và xếp các lá bài theo đúng team (có liên kết) để ghi điểm<br><br>
+        <b>2. Chia bài:</b><br>
+        - Mỗi người: 7 lá bài trên tay<br>
+        - Giữa bàn: 8 lá bài ngửa<br>
+        - Phần còn lại: bài úp để rút<br><br>
+        <b>3. Lượt chơi & cách lấy bài:</b><br>
+        - Mỗi lượt có 15 giây<br>
+        - Toàn bộ các lá cùng team (có liên kết) sẽ được chuyển vào khu “Đã tìm thấy nhau”.<br>
+        - Hết bài trên tay: bắt buộc rút bài<br>
+        - Chỉ được chọn 1 trong 2 hành động:<br>
+        * <u>Lấy bài trên bàn</u>: Nếu bài trên tay hoặc bài trong khu “Đã tìm thấy nhau” có liên kết với bất kỳ lá nào trên bàn -> được lấy lá đó. (Bắt buộc phải có liên kết mới được lấy)<br>
+        * <u>Rút bài úp</u>: Được rút khi không thể lấy bài trên bàn hoặc chủ động không lấy. Sau khi rút có thể bỏ qua hoặc giữ lại trên tay.<br><br>
+        <b>4. Kết thúc & tính điểm:</b><br>
+        Ván kết thúc khi một bên hết toàn bộ bài hoặc không thể rút/liên kết thêm.<br>
+        - Mỗi liên kết: <b>+1 điểm</b><br>
+        - Đủ team: <b>+5 điểm</b><br>
+        - Mỗi lá lẻ trên tay: <b>-2 điểm</b>
+    </div>
 
     <div class="play-main">
         <div class="play-area"><div id="ai-hand" class="card-row-scroll"></div><div class="captured-zone"><div class="zone-label"><span>Đã tìm thấy nhau</span> <span id="score-ai" style="color:#ff4757">0</span></div><div id="ai-captured" class="captured-list"></div></div></div>
@@ -160,16 +195,16 @@
     </div>
     
     <div id="side-teams" class="scroll-v" style="height:450px;"></div>        
-    
-    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
-        <button class="btn" style="background:#3498db;" onclick="togglePause()">Tạm dừng</button>
-        <button class="btn" style="background:#9b59b6;" onclick="resetGame()">Làm lại</button>
-        <button class="btn" style="background:#ffffff; color:#000000; margin-top: 10px; border: 1px solid #ccc;" onclick="showCoNhaModal()">BẢN CỢT NHÃ</button>
-    </div>
+    <div class="btn-grid">
+    <button class="btn" style="background:#3498db;" onclick="togglePause()">Tạm dừng</button>
+    <button class="btn" style="background:#9b59b6;" onclick="resetGame()">Làm lại</button>
+    <button class="btn" style="background:#ffffff; color:#000; border: 1px solid #ccc;" onclick="showCoNhaModal()">Bản Cợt Nhã</button>
+    <button class="btn" style="background:#f39c12; color:#000;" onclick="showVer2Modal()">Bản 2.0</button>
+</div>
 </div>
 
 <script>
-    const AT_NAMES = ["Hồng Sơn","Bằng Kiều","Tự Long","Phan Đinh Tùng","Tuấn Hưng","Đinh Tiến Đạt","Phạm Khánh Hưng","Tiến Luật","Thành Trung","Đăng Khôi","Trương Thế Vinh","Hà Lê","Đỗ Hoàng Hiệp","Thanh Duy","Quốc Thiên","Binz","Cường Seven","Nguyễn Trần Duy Nhất","Jun Phạm","Neko Lê","Tăng Phúc","Thiên Minh","BB Trần","Liên Bỉnh Phát","S.T Sơn Thạch","Rhymastic","Kiên Ứng","(S)TRONG Trọng Hiếu","Soobin Hoàng Sơn","Kay Trần","Bùi Công Nam","Duy Khánh","HuyR","Anh Tuấn","SLIMV","Đinh Hà Uyên Thư","Vĩ Khang","Long Kenji","Khánh Vy","Nhà Đam Mê","Nhà KK","Nhà Sao Sáng","Nhà Tái Sinh","Nhà Ngũ Hành","Nhà Hát","Nhà Xuân Hạ Thu Đông","Nhà Xương Rồng","Gai Con","Concert","Hỏa Ca","Thu Hoài", "Trái Đất Ôm Mặt Trời","Sao Cũng Được","Đêm Cô Đơn","Đào Liễu","Đi Đu Đưa Đi","Đường Xa Ướt Mưa x Đừng Qua Lối Đó","Là Anh Đó","Vượt Lên Mọi Thử Thách","12H03","Chiếc Khăn Piêu","Ông Xã Em Number One","Anh Sẽ Nhớ Mãi","Let Me Feel Your Love Tonight","Thuận Nước Đẩy Thuyền","Chuyện Nhà Bé Thôi, Con Đừng Về","Mưa Trên Phố Huế","LOCKDOWN","Buông","Triệu Lý Do","Một Vòng Việt Nam","Gọi Anh","Dạ Cổ Hoài Lang","Liên Khúc Vui Trung Thu","Phai","Rơi","Nét","Gene x Có Không Giữ Mất Đừng Tìm","SUPERSTAR","Mẹ Yêu Con","IF","Bay","Đỏ Quên Đi","Bống Bống Bang Bang","Quá Là Trôi","Dòng Thời Gian"];
+    const AT_NAMES = ["Hồng Sơn","Bằng Kiều","Tự Long","Phan Đinh Tùng","Tuấn Hưng","Đinh Tiến Đạt","Phạm Khánh Hưng","Tiến Luật","Thành Trung","Đăng Khôi","Trương Thế Vinh","Hà Lê","Đỗ Hoàng Hiệp","Thanh Duy","Quốc Thiên","Binz","Cường Seven","Nguyễn Trần Duy Nhất","Jun Phạm","Neko Lê","Tăng Phúc","Thiên Minh","BB Trần","Liên Bỉnh Phát","S.T Sơn Thạch","Rhymastic","Kiên Ứng","(S)TRONG Trọng Hiếu","Soobin Hoàng Sơn","Kay Trần","Bùi Công Nam","Duy Khánh","HuyR","Anh Tuấn","SLIMV","Đinh Hà Uyên Thư","Vĩ Khang","Long Kenji","Khánh Vy","Nhà Đam Mê","Nhà KK","Nhà Sao Sáng","Nhà Tái Sinh","Nhà Ngũ Hành","Nhà Hát","Nhà Xuân Hạ Thu Đông","Nhà Xương Rồng","Gai Con","Concert","Hỏa Ca"];
     let teams = [], at_images = {}, cardBack = "", isPaused = false;
     let game = { pHand:[], aiHand:[], board:[], deck:[], pCap:[], aiCap:[], turn:'p', selected:null, time:15, iv:null, isGameOver: false };
     
@@ -523,23 +558,22 @@ function goToCoNha() {
     closeCoNha();
     window.location.href = 'https://forms.gle/a3oqYKuHyV9TppEx5';
 }
-    // Hiển thị modal và tạm dừng thời gian game
-function showBackModal() {
-    isPaused = true;
-    document.getElementById('back-modal').classList.remove('hidden');
+    // --- Code xử lý cho nút Bản 2.0 ---
+
+function showVer2Modal() {
+    isPaused = true; // Tạm dừng game khi mở popup
+    document.getElementById('ver2-modal').classList.remove('hidden');
 }
 
-// Đóng modal và cho phép game tiếp tục chạy
-function closeBackModal() {
-    isPaused = false;
-    document.getElementById('back-modal').classList.add('hidden');
+function closeVer2() {
+    isPaused = false; // Chơi tiếp khi đóng
+    document.getElementById('ver2-modal').classList.add('hidden');
 }
 
-// Chuyển hướng đến link phiên bản cũ
-function goToVersion1() {
-    // Bạn thay link phiên bản 1 của bạn vào dấu nháy dưới đây nhé
-    window.location.href = 'https://atvncg2024.vercel.app/?play=true';
+function goToVer2() {
+    window.location.href = 'https://atvncg2024v2.vercel.app/?play=true'; 
 }
 </script>
 </body>
 </html>
+
